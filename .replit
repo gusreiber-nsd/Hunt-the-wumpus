@@ -1,0 +1,7 @@
+run = "pwd; cd ./src/java/org/bothell/cs/wumpus/;rm *.class; javac *.java; java Main"
+
+[nix]
+channel = "stable-23_11"
+
+[deployment]
+run = ["sh", "-c", "javac *.java; java Main"]
