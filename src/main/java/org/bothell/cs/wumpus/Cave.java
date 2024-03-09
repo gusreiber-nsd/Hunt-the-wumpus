@@ -1,3 +1,5 @@
+package org.bothell.cs.wumpus;
+
 import java.util.Random;
 
 public class Cave{
@@ -8,11 +10,11 @@ public class Cave{
   private int[] cords;
   private boolean[] walls;
   private int minWalls;
-  
+
   public Cave(Map map){
      build(map, 0, 0);
   }
-  
+
   public Cave(Map map, int x, int y, Hazard hazard){
     build(map, x, y);
     this.hazard = hazard;
@@ -50,7 +52,7 @@ public class Cave{
       tmp[i-1] = draw;
     }
   }
-  
+
   public int[] getExits(){
     int open = walls.length - wallCount();
     int[] exits = new int[open];
@@ -59,13 +61,13 @@ public class Cave{
 
     return exits;
   }
-  
+
   public int wallCount(){
     int count = 0;
     for(boolean w:walls) if(w) count++;
     return count;
   }
-  
+
   public String getContent(){
     return "" + this.hazard.show();
   }
@@ -77,7 +79,7 @@ public class Cave{
   public int[] getCords(){
     return this.cords;
   }
-  
+
   public boolean[] getWalls(){
     return this.walls;
   }
@@ -89,7 +91,7 @@ public class Cave{
   public void addWall(int pos){
     this.walls[pos] = true;
   }
-  
+
   @Override
   public String toString(){
     return "[" + cords[0] + "," + cords[1] + "] ";

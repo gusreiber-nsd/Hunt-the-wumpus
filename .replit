@@ -1,4 +1,5 @@
-run = "pwd; cd ./src/java/org/bothell/cs/wumpus/;rm *.class; javac *.java; java Main"
+language = "java"
+run = "mvn package; java -jar target/wumpas-1.0.0.jar"
 
 [nix]
 channel = "stable-23_11"

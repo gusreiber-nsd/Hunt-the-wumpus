@@ -1,3 +1,5 @@
+package org.bothell.cs.wumpus;
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -5,11 +7,11 @@ public class Map{
   public static final int SIZE  = 6;
   public static final int CELL  = 6;
   public static final int WALLS = 3;
-  
+
   private Cave[][] grid;
   private Painter p;
   private int crawlCount;
-  
+
   public Map(){
     this.crawlCount = 0;
     this.grid = new Cave[SIZE][SIZE];
@@ -23,7 +25,7 @@ public class Map{
   public void draw(){
     p.draw();
   }
-  
+
   public Cave[][] getGrid(){
     return this.grid;
   }
@@ -31,7 +33,7 @@ public class Map{
   private Cave[] getAdjacent(Cave c){
     return getAdjacent(c.getCords()[0], c.getCords()[1]);
   }
-  
+
   private Cave[] getAdjacent(int x, int y){
     Cave[] sides = new Cave[CELL];
     sides[4] = grid[ y ][ prev(x) ];
@@ -40,18 +42,18 @@ public class Map{
     sides[0] = grid[ prev(y) ][ (y%2==1)? next(x):x ];
     sides[3] = grid[ next(y) ][ (y%2==0)? prev(x):x ];
     sides[2] = grid[ next(y) ][ (y%2==1)? next(x):x ];
-    
+
     return sides;
   }
 
   private int next(int i){
     return (i<SIZE-1)? i+1    : 0;
   }
-  
+
   private int prev(int i){
     return (i<1)     ? SIZE-1 : i-1;
   }
-  
+
   private void crawl(Cave start){
     crawlCount++;
     start.pickWalls(0);
@@ -69,7 +71,7 @@ public class Map{
     Cave[] connects = new Cave[paths.length];
     for(int i=0; i < paths.length; i++) 
       connects[i] = nextCaves[paths[i]];
-    
+
     /*
       x    y   ==> (x+3)%6
       0 => 3
@@ -80,6 +82,6 @@ public class Map{
       5 => 2
     */
   }
-  
-  
+
+
 }
