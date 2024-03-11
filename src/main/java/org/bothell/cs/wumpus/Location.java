@@ -86,7 +86,7 @@ public class Location {
       tmp[rnd] = swap;
       tmp[i-1] = draw;
     }
-    System.out.println(Arrays.toString(this.walls));
+    System.out.println(Arrays.toString(this.exits));
   }
 
   ////////////////////////////////////
