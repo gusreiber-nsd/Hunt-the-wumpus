@@ -7,6 +7,8 @@ import javax.imageio.*;
 
 public class GUI extends JFrame{
   
+  private Location[] loi;
+
   public GUI(){
     setTitle("Wumpus");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
