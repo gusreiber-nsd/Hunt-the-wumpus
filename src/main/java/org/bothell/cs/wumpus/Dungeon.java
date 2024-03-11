@@ -12,6 +12,8 @@ public class Dungeon {
 
   public Dungeon(){
 
+    LOCS[0][0] = new Location(this, SHAPE, HEIGHT);
+    System.out.println("DUNGEON!");
   }
 
   public Location[] getAdjacent(Location l){
@@ -49,11 +51,11 @@ public class Dungeon {
   }
 
   private int next(int i){
-    return (i<SIZE-1)? i+1    : 0;
+    return (i<SHAPE-1)? i+1    : 0;
   }
 
   private int prev(int i){
-    return (i<1)     ? SIZE-1 : i-1;
+    return (i<1)     ? SHAPE-1 : i-1;
   }
 
   public ArrayList<Hazard> getHazards(){
@@ -62,6 +64,10 @@ public class Dungeon {
 
   public void setHazards(ArrayList<Hazard> h){
     this.hazards = h;
+  }
+
+  public int getShape(){
+    return this.SHAPE;
   }
 
 }

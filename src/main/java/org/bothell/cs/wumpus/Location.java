@@ -1,53 +1,92 @@
 package org.bothell.cs.wumpus;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Location {
-  private boolean[] walls;   
+  private boolean[] exits;   
   
   private int               x;
   private int               y;
+  private int               minWalls;
+  private int               exit;
   private Dungeon           dungeon;
   private ArrayList<Hazard> hazards; 
   private Player            player;
+  private Random            die;
 
   ////////////////////////////////////
   // Constructors
   ////////////////////////////////////
-  public Location(Dungeon dungeon, int x, int y){
+
+  public Location(Dungeon dungeon, int x, int y, int entrance){
     this.dungeon = dungeon;
     this.x       = x;
     this.y       = y;
-    this.walls   = new boolean[dungeon.getShape()];
+    this.minWalls = 3;
+    this.exits   = new boolean[dungeon.getShape()];
+    this.die     = new Random();
+
+    findPaths(entrance);
+
+    System.out.println("LOCATION!");
+  }
+
+  public Location(Dungeon dungeon, int x, int y){
+    this(dungeon, x, y, -1);
   }
 
   ////////////////////////////////////
+
+  public void findPaths(int entrance){
+    // entrance
+    // randExit = this.die.nextInt(5) ;
+    // exit     = (randExit < entrance)? randExit : randExit + 1 ;
+    // also     = this.die.nextInt(6) ;
+    this.exit = this.die.nextInt(5) ;
+
+    int[] paths = new int[exits.length - minWalls];
+   
+    paths[0] = (entrance < 0)? exit : entrance;
+    paths[1] = (exit <= paths[0] )? exit : exit + 1 ;
+    paths[2] = this.die.nextInt(6) ;
+    System.out.println("entrance: " + entrance);
+    System.out.println("entrance: " + paths[0]);
+    System.out.println("Exit: " + paths[1]);
+    System.out.println("also: " + paths[2]);
+
+    System.out.println(Arrays.toString(paths));
+    for(int i:paths) this.exits[i] = true;
+
+    System.out.println(Arrays.toString(this.exits));
+  }
 
   public void pickWalls(int entrance){
 
     Random die = new Random();
     // build wall slots excluding the entrance possition
     // as required by the Map cells.
-    int[] tmp = new int[walls.length];
-    for(int i=0; i < walls.length; i++){
-      if(entrance > i) tmp[i] =i;
+    int[] tmp = new int[exits.length];
+    for(int i=0; i < exits.length; i++){
+      if(entrance > i) tmp[i] = i;
       else{
-        tmp[i] = walls.length - 1;
-        entrance = walls.length - 1;
+        tmp[i] = exits.length - 1;
+        entrance = exits.length - 1;
       }
     }
     // randomly draw from the remaining wall slots until there are
     // the number required by the Map.
-    for(int i = walls.length - 1; i > minWalls; i--){
+    for(int i = exits.length - 1; i > minWalls; i--){
       int rnd = die.nextInt(i);
       int draw = tmp[rnd];
       int swap = tmp[i-1];
-      walls[draw] = true;
+      exits[draw] = true;
       // clean-up by moving selected out of range
       tmp[rnd] = swap;
       tmp[i-1] = draw;
     }
+    System.out.println(Arrays.toString(this.walls));
   }
 
   ////////////////////////////////////
