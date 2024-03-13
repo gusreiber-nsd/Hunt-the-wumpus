@@ -3,7 +3,9 @@ package org.bothell.cs.wumpus;
 public class Main{
   public static void main(String[] args){
 
-    new Dungeon();
+    Dungeon d = new Dungeon();
+    new MazeGen(d);
+
     new Controller();
     
     System.out.println("OH no!!!!!!!");
