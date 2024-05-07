@@ -7,7 +7,7 @@
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
             "stopOnEntry": false,
-            "mainClass": "com.mycompany.app.App",
+            "mainClass": "org.bothell.cs.wumpus.Main",
             "args": "",
             "projectName": "my-app"
         }
