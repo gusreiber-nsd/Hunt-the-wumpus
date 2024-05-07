@@ -9,7 +9,7 @@
             "stopOnEntry": false,
             "mainClass": "org.bothell.cs.wumpus.Main",
             "args": "",
-            "projectName": "my-app"
+            "projectName": "wumpus"
         }
     ]
 }
