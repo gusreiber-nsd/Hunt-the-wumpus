@@ -1,8 +1,0 @@
-language = "java"
-run = "mvn package; java -jar target/wumpas-1.0.0.jar"
-
-[nix]
-channel = "stable-23_11"
-
-[deployment]
-run = ["sh", "-c", "javac *.java; java Main"]

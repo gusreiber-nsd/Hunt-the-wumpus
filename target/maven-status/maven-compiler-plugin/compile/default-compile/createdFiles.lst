@@ -1,7 +1,7 @@
 org/bothell/cs/wumpus/WB.class
 org/bothell/cs/wumpus/Player.class
-org/bothell/cs/wumpus/Map.class
 org/bothell/cs/wumpus/Location.class
+org/bothell/cs/wumpus/Map.class
 org/bothell/cs/wumpus/Wall.class
 org/bothell/cs/wumpus/Cave.class
 org/bothell/cs/wumpus/Painter.class
