@@ -8,5 +8,13 @@
     "6080": {
       "label": "desktop"
     }
-  }
+  },
+  "postCreateCommand": "export DISPLAY=:1 && Xvfb :1 -screen 0 1024x768x16 &",
+  "extensions": [
+    "vscjava.vscode-java-pack",
+    "redhat.java",
+    "vscjava.vscode-java-debug",
+    "vscjava.vscode-java-dependency",
+    "vscjava.vscode-java-test"
+  ]
 }
